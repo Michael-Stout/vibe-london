@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vibe Coding London | One-Day Hackathon",
+  title: {
+    default: "Vibe Coding London",
+    template: "%s | Vibe Coding London",
+  },
   description:
-    "A one-day hackathon in London where you learn vibe coding and build a full stack application. Hands-on and powered by AI.",
+    "Hands-on courses in London to master AI-powered development. Learn by building.",
 };
 
 export default function RootLayout({
@@ -28,7 +32,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <main className="flex-1 flex flex-col">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

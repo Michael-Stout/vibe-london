@@ -1,63 +1,49 @@
 import Link from "next/link";
+import Image from "next/image";
+import { SiteNav } from "@/components/SiteNav";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navigation */}
-      <nav className="
-        fixed top-0 w-full z-50
-        border-b border-white/10 bg-background/80 backdrop-blur-md
-      ">
-        <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-          <span className="text-lg font-bold tracking-tight">
-            <span className="text-primary-light">Vibe</span> Coding London
-          </span>
-          <a
-            href="mailto:hello@vibecodinglondon.com"
-            className="
-              rounded-full bg-primary px-5 py-2 text-sm font-medium text-white
-              hover:bg-primary-light transition-colors
-            "
-          >
-            Contact Us
-          </a>
-        </div>
-      </nav>
+    <>
+      <SiteNav />
 
-      {/* Hero */}
-      <header
-        className="
-          relative flex flex-col items-center justify-center
-          px-6 pt-40 pb-16 text-center
-          bg-cover bg-[center_60%] bg-no-repeat bg-fixed
-        "
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,0.6), rgba(10,10,10,1)), url('/london-hero.jpg')",
-        }}
-      >
-        <h1 className="
-          mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight
-          sm:text-5xl md:text-6xl
-        ">
-          <span className="text-primary-light">Vibe</span> Coding London
-        </h1>
-        <p className="
-          mx-auto mt-6 max-w-2xl text-lg text-muted
-          sm:text-xl
-        ">
-          Hands-on courses to master AI-powered development. Learn by building.
-        </p>
+      <header className="
+        relative flex flex-col items-center justify-center
+        px-6 pt-40 pb-16 text-center overflow-hidden
+      ">
+        <Image
+          src="/london-hero.jpg"
+          alt="Houses of Parliament and Big Ben at sunset"
+          fill
+          priority
+          className="object-cover object-[center_60%]"
+        />
+        <div className="
+          absolute inset-0
+          bg-gradient-to-b from-background/40 via-background/60 to-background
+        " />
+        <div className="relative z-10">
+          <h1 className="
+            mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight
+            sm:text-5xl md:text-6xl
+          ">
+            <span className="text-primary-light">Vibe</span> Coding London
+          </h1>
+          <p className="
+            mx-auto mt-6 max-w-2xl text-lg text-muted
+            sm:text-xl
+          ">
+            Hands-on courses to master AI-powered development. Learn by building.
+          </p>
+        </div>
       </header>
 
-      {/* Course Tiles */}
       <section className="flex-1 py-24 px-6">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-2xl font-bold tracking-tight text-center sm:text-3xl">
             Our Courses
           </h2>
           <div className="mt-16 grid gap-8 sm:grid-cols-2">
-            {/* Vibe Coding Tile */}
             <Link
               href="/vibe-coding"
               className="
@@ -67,13 +53,13 @@ export default function Home() {
             >
               <div className="
                 mb-4 inline-block rounded-full
-                bg-purple-700/20 px-4 py-1.5
+                bg-purple-400/20 px-4 py-1.5
                 text-sm font-semibold text-purple-400
               ">
                 One-Day Hackathon
               </div>
               <h3 className="text-2xl font-bold sm:text-3xl">
-                Learn <span className="text-purple-700">Vibe Coding</span>
+                Learn <span className="text-purple-400">Vibe Coding</span>
                 <br />
                 &amp; Build a{" "}
                 <span className="text-accent-light">Full Stack App</span>
@@ -92,7 +78,6 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* OpenClaw Tile */}
             <Link
               href="/openclaw"
               className="
@@ -129,33 +114,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-12 px-6">
-        <div className="
-          mx-auto max-w-6xl flex flex-col items-center justify-between
-          gap-4 text-sm text-muted sm:flex-row
-        ">
-          <span>
-            &copy; {new Date().getFullYear()} Vibe Coding London. All rights
-            reserved.
-          </span>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Twitter
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              LinkedIn
-            </a>
-            <a
-              href="mailto:hello@vibecodinglondon.com"
-              className="hover:text-foreground transition-colors"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }
